@@ -168,35 +168,38 @@ const emptyState = document.querySelector("#emptyState");
 const menuToggle = document.querySelector("#menuToggle");
 const siteNavigation = document.querySelector("#siteNavigation");
 
-menuToggle.addEventListener("click", () => {
-  const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-  menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-  menuToggle.setAttribute(
-    "aria-label",
-    isExpanded ? "Open navigation" : "Close navigation",
-  );
-  siteNavigation.hidden = isExpanded;
-});
+if (menuToggle && siteNavigation) {
+  menuToggle.addEventListener("click", () => {
+    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+    menuToggle.setAttribute(
+      "aria-label",
+      isExpanded ? "Open navigation" : "Close navigation",
+    );
+    siteNavigation.hidden = isExpanded;
+  });
 
-siteNavigation.addEventListener("click", (event) => {
-  if (!event.target.closest("a")) return;
-  siteNavigation.hidden = true;
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Open navigation");
-});
+  siteNavigation.addEventListener("click", (event) => {
+    if (!event.target.closest("a")) return;
+    siteNavigation.hidden = true;
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+  });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key !== "Escape" || siteNavigation.hidden) return;
-  siteNavigation.hidden = true;
-  menuToggle.setAttribute("aria-expanded", "false");
-  menuToggle.setAttribute("aria-label", "Open navigation");
-});
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || siteNavigation.hidden) return;
+    siteNavigation.hidden = true;
+    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.setAttribute("aria-label", "Open navigation");
+  });
+}
 
 function formatPrice(amount) {
   return `Rs ${amount.toLocaleString("en-PK")}`;
 }
 
 function renderCategories() {
+  if (!categoryList) return;
   const buttons = [{ id: "all", name: "All menu" }, ...categories];
   categoryList.innerHTML = buttons
     .map(
@@ -223,6 +226,7 @@ function getVisibleDishes() {
 }
 
 function renderMenu() {
+  if (!menuSections || !emptyState || !searchInput) return;
   const visibleDishes = getVisibleDishes();
   const visibleCategories = categories.filter((category) =>
     visibleDishes.some((dish) => dish.category === category.id),
@@ -254,15 +258,22 @@ function renderMenu() {
   const categoryName = categories.find(
     (category) => category.id === activeCategory,
   )?.name;
-  document.querySelector("#resultsLabel").textContent = searchInput.value.trim()
-    ? `Results for “${searchInput.value.trim()}”`
-    : categoryName || "All dishes";
-  document.querySelector("#dishCount").textContent = visibleDishes.length;
+  const resultsLabel = document.querySelector("#resultsLabel");
+  const dishCount = document.querySelector("#dishCount");
+  if (resultsLabel) {
+    resultsLabel.textContent = searchInput.value.trim()
+      ? `Results for “${searchInput.value.trim()}”`
+      : categoryName || "All dishes";
+  }
+  if (dishCount) {
+    dishCount.textContent = visibleDishes.length;
+  }
   emptyState.hidden = visibleDishes.length > 0;
   menuSections.hidden = visibleDishes.length === 0;
 }
 
 function renderCart() {
+  if (!cartItems) return;
   const entries = [...cart.entries()];
   const itemCount = entries.reduce(
     (total, [, quantity]) => total + quantity,
@@ -290,12 +301,19 @@ function renderCart() {
         .join("")
     : '<div class="cart-empty"><span class="empty-bowl" aria-hidden="true">✳</span><strong>Your table is waiting.</strong><p>Add something delicious<br>to get started.</p></div>';
 
-  document.querySelector("#cartCount").textContent = itemCount;
-  document.querySelector("#subtotal").textContent = formatPrice(subtotal);
-  document.querySelector("#mobileCartCount").textContent = itemCount;
-  document.querySelector("#mobileSubtotal").textContent = formatPrice(subtotal);
-  document.querySelector("#checkoutButton").disabled = itemCount === 0;
-  document.querySelector("#clearCart").hidden = itemCount === 0;
+  const cartCount = document.querySelector("#cartCount");
+  const subtotalElement = document.querySelector("#subtotal");
+  const mobileCartCount = document.querySelector("#mobileCartCount");
+  const mobileSubtotal = document.querySelector("#mobileSubtotal");
+  const checkoutButton = document.querySelector("#checkoutButton");
+  const clearCartButton = document.querySelector("#clearCart");
+
+  if (cartCount) cartCount.textContent = itemCount;
+  if (subtotalElement) subtotalElement.textContent = formatPrice(subtotal);
+  if (mobileCartCount) mobileCartCount.textContent = itemCount;
+  if (mobileSubtotal) mobileSubtotal.textContent = formatPrice(subtotal);
+  if (checkoutButton) checkoutButton.disabled = itemCount === 0;
+  if (clearCartButton) clearCartButton.hidden = itemCount === 0;
 }
 
 function showToast(message) {
@@ -306,83 +324,106 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2200);
 }
 
-categoryList.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-category]");
-  if (!button) return;
-  activeCategory = button.dataset.category;
-  renderCategories();
-  renderMenu();
-});
+if (categoryList) {
+  categoryList.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-category]");
+    if (!button) return;
+    activeCategory = button.dataset.category;
+    renderCategories();
+    renderMenu();
+  });
+}
 
-searchInput.addEventListener("input", renderMenu);
+if (searchInput) {
+  searchInput.addEventListener("input", renderMenu);
+}
 
-menuSections.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-add]");
-  if (!button) return;
-  const id = button.dataset.add;
-  cart.set(id, (cart.get(id) || 0) + 1);
-  renderCart();
-  showToast(
-    `${dishes.find((dish) => dish.id === id).name} added to your order`,
-  );
-});
+if (menuSections) {
+  menuSections.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-add]");
+    if (!button) return;
+    const id = button.dataset.add;
+    cart.set(id, (cart.get(id) || 0) + 1);
+    renderCart();
+    showToast(
+      `${dishes.find((dish) => dish.id === id).name} added to your order`,
+    );
+  });
+}
 
-cartItems.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-change]");
-  if (!button) return;
-  const id = button.dataset.change;
-  const nextQuantity = (cart.get(id) || 0) + Number(button.dataset.amount);
-  if (nextQuantity > 0) cart.set(id, nextQuantity);
-  else cart.delete(id);
-  renderCart();
-});
+if (cartItems) {
+  cartItems.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-change]");
+    if (!button) return;
+    const id = button.dataset.change;
+    const nextQuantity = (cart.get(id) || 0) + Number(button.dataset.amount);
+    if (nextQuantity > 0) cart.set(id, nextQuantity);
+    else cart.delete(id);
+    renderCart();
+  });
+}
 
-document.querySelector("#clearCart").addEventListener("click", () => {
-  cart.clear();
-  renderCart();
-});
+const clearCartButton = document.querySelector("#clearCart");
+if (clearCartButton) {
+  clearCartButton.addEventListener("click", () => {
+    cart.clear();
+    renderCart();
+  });
+}
 
-document.querySelector("#changeTable").addEventListener("click", () => {
-  const tableNumber = document.querySelector("#tableNumber");
-  const table = window.prompt(
-    "Which table are you at?",
-    tableNumber.textContent,
-  );
-  if (table && table.trim()) tableNumber.textContent = table.trim();
-});
+const changeTableButton = document.querySelector("#changeTable");
+if (changeTableButton) {
+  changeTableButton.addEventListener("click", () => {
+    const tableNumber = document.querySelector("#tableNumber");
+    const table = window.prompt(
+      "Which table are you at?",
+      tableNumber.textContent,
+    );
+    if (table && table.trim()) tableNumber.textContent = table.trim();
+  });
+}
 
-document.querySelector("#checkoutButton").addEventListener("click", () => {
-  const entries = [...cart.entries()];
-  const summary = entries
-    .map(
-      ([id, quantity]) =>
-        `${quantity} × ${dishes.find((dish) => dish.id === id).name}`,
+const checkoutButton = document.querySelector("#checkoutButton");
+if (checkoutButton) {
+  checkoutButton.addEventListener("click", () => {
+    const entries = [...cart.entries()];
+    const summary = entries
+      .map(
+        ([id, quantity]) =>
+          `${quantity} × ${dishes.find((dish) => dish.id === id).name}`,
+      )
+      .join("\n");
+    if (
+      !window.confirm(
+        `Confirm your order?\n\n${summary}\n\nSubtotal: ${document.querySelector("#subtotal").textContent}`,
+      )
     )
-    .join("\n");
-  if (
-    !window.confirm(
-      `Confirm your order?\n\n${summary}\n\nSubtotal: ${document.querySelector("#subtotal").textContent}`,
-    )
-  )
-    return;
-  cart.clear();
-  renderCart();
-  showToast("Order received. Our kitchen is on it!");
-});
+      return;
+    cart.clear();
+    renderCart();
+    showToast("Order received. Our kitchen is on it!");
+  });
+}
 
-document.querySelector("#viewOrder").addEventListener("click", () => {
-  document
-    .querySelector("#orderPanel")
-    .scrollIntoView({ behavior: "smooth", block: "center" });
-});
+const viewOrderButton = document.querySelector("#viewOrder");
+if (viewOrderButton) {
+  viewOrderButton.addEventListener("click", () => {
+    document
+      .querySelector("#orderPanel")
+      .scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+}
 
 document.addEventListener("keydown", (event) => {
   if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+    if (!searchInput) return;
     event.preventDefault();
     searchInput.focus();
   }
 });
 
-renderCategories();
-renderMenu();
-renderCart();
+if (categoryList || menuSections || searchInput || cartItems || emptyState) {
+  renderCategories();
+  renderMenu();
+  renderCart();
+}
