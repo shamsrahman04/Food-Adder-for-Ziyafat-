@@ -1669,7 +1669,12 @@ body {
 .page-hero::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(17, 17, 14, 0.7), rgba(17, 17, 14, 0.35) 55%, rgba(17, 17, 14, 0.12));
+  background: linear-gradient(
+    90deg,
+    rgba(17, 17, 14, 0.7),
+    rgba(17, 17, 14, 0.35) 55%,
+    rgba(17, 17, 14, 0.12)
+  );
   content: "";
 }
 .page-hero-copy {
@@ -1685,7 +1690,10 @@ body {
 }
 .page-hero-copy h1 {
   margin: 16px 0 10px;
-  font: 600 clamp(42px, 5vw, 68px)/1.04 "Playfair Display", Georgia, serif;
+  font:
+    600 clamp(42px, 5vw, 68px)/1.04 "Playfair Display",
+    Georgia,
+    serif;
   letter-spacing: -0.04em;
 }
 .page-hero-copy p:not(.eyebrow) {
@@ -1714,7 +1722,10 @@ body {
 .section-heading h2,
 .contact-panel h2 {
   margin: 16px 0 12px;
-  font: 600 clamp(31px, 3vw, 48px)/1.1 "Playfair Display", Georgia, serif;
+  font:
+    600 clamp(31px, 3vw, 48px)/1.1 "Playfair Display",
+    Georgia,
+    serif;
 }
 .story-highlight p,
 .info-card p,
@@ -1760,7 +1771,10 @@ body {
 }
 .info-card h3 {
   margin: 14px 0 10px;
-  font: 600 24px/1.2 "Playfair Display", Georgia, serif;
+  font:
+    600 24px/1.2 "Playfair Display",
+    Georgia,
+    serif;
 }
 .accent-card {
   background: #f6f0e3;
@@ -1785,7 +1799,10 @@ body {
 }
 .timeline-item h3 {
   margin: 0 0 6px;
-  font: 600 22px/1.2 "Playfair Display", Georgia, serif;
+  font:
+    600 22px/1.2 "Playfair Display",
+    Georgia,
+    serif;
 }
 .timeline-item p {
   margin: 0;
@@ -1816,7 +1833,10 @@ body {
 }
 .menu-card h3 {
   margin: 18px 0 14px;
-  font: 600 28px/1.15 "Playfair Display", Georgia, serif;
+  font:
+    600 28px/1.15 "Playfair Display",
+    Georgia,
+    serif;
 }
 .menu-card ul {
   margin: 0;
@@ -1845,7 +1865,10 @@ body {
 }
 .dish-row h3 {
   margin: 0 0 5px;
-  font: 600 22px/1.2 "Playfair Display", Georgia, serif;
+  font:
+    600 22px/1.2 "Playfair Display",
+    Georgia,
+    serif;
 }
 .dish-row p {
   margin: 0;
@@ -1877,11 +1900,16 @@ body {
   background: rgba(255, 255, 255, 0.38);
 }
 .package-item strong {
-  font: 600 20px/1.2 "Playfair Display", Georgia, serif;
+  font:
+    600 20px/1.2 "Playfair Display",
+    Georgia,
+    serif;
 }
 .package-item em {
   color: #274937;
-  font: 700 14px "DM Sans", sans-serif;
+  font:
+    700 14px "DM Sans",
+    sans-serif;
   font-style: normal;
 }
 
@@ -1941,7 +1969,9 @@ body {
   border: 0;
   background: #1f3d34;
   color: white;
-  font: 700 12px "DM Sans", sans-serif;
+  font:
+    700 12px "DM Sans",
+    sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
