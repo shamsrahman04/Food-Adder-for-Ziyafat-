@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f6f0" />
+    <meta
+      name="description"
+      content="Explore the menu and build your order at Ziyafat Hotel."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <title>Ziyafat Hotel | Order Menu</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Ziyafat Hotel home">
+        <span class="brand-mark" aria-hidden="true">ZIYAFAT</span>
+        <span class="brand-caption">RESTAURANT <i>24/7</i></span>
+      </a>
+      <div class="topbar-actions">
+        <a class="reservation-button" href="tel:+93782322222">Reservation</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="siteNavigation">
+          <span></span><span></span>
+        </button>
+      </div>
+      <nav class="site-navigation" id="siteNavigation" aria-label="Main navigation" hidden>
+        <a href="#story">Our story</a>
+        <a href="#our-menu">Our menu</a>
+        <a href="#banquets">Banquets</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-label="Welcome to Ziyafat">
+        <img
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1800&q=85"
+          alt="A table filled with freshly grilled food"
+        />
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> WE SERVE FOOD, HARMONY, &amp; LAUGHTER</p>
+          <h1>Authentic Taste<br />of Afghan <em>Hospitality</em></h1>
+          <p class="hero-description">
+            Discover the warmth of Kabul through generous hospitality and the
+            rich, unforgettable flavours of Afghanistan.
+          </p>
+          <a class="hero-link" href="#our-menu"
+            >Discover Ziyafat <span aria-hidden="true">↗</span></a
+          >
+        </div>
+        <a class="hero-reservation" href="tel:+93782322222" aria-label="Call to reserve a table">
+          <span aria-hidden="true">↗</span><strong>Table<br />Reservation</strong>
+        </a>
+        <div class="hero-foot">
+          <span>KABUL, AFGHANISTAN</span><span>TRADITION · HOSPITALITY · TASTE</span
+          ><span>OPEN 24 HOURS</span>
+        </div>
+      </section>
+
+      <section class="story-section" id="story">
+        <div class="story-image-wrap">
+          <img src="https://images.unsplash.com/photo-1547595628-c61a29f496f0?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="A welcoming Afghan dining table set for a shared meal" loading="lazy" />
+          <span class="image-caption">A TABLE FOR EVERY OCCASION</span>
+        </div>
+        <div class="story-copy">
+          <p class="eyebrow eyebrow-dark"><span></span> A TASTE OF AFGHANISTAN</p>
+          <h2>Where every meal<br />feels like <em>coming home.</em></h2>
+          <p>Experience the intersection of ancient spice and modern culinary artistry. Ziyafat brings Kabul's finest flavours to the table, with thoughtful service, private dining, and the easy warmth of Afghan hospitality.</p>
+          <p>Come together over a meal made to be remembered, from a quiet dinner to a celebration shared with everyone you love.</p>
+          <a class="text-link" href="#our-menu">Discover our table <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <section class="banquet-section" id="banquets">
+        <div class="banquet-copy">
+          <p class="eyebrow"><span></span> MAKE IT A MOMENT</p>
+          <h2>An extraordinary<br />banqueting <em>experience.</em></h2>
+          <p>From intimate family gatherings to grand celebrations, our team brings the finest Afghan flavours and attentive service to every occasion.</p>
+          <a class="light-link" href="tel:+93782322222">Plan your event <span aria-hidden="true">↗</span></a>
+        </div>
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&amp;fit=crop&amp;w=1400&amp;q=85" alt="An elegant banquet table prepared for a celebration" loading="lazy" />
+        <span class="banquet-index">01 / CELEBRATE TOGETHER</span>
+      </section>
+
+      <section class="menu-preview" id="our-menu">
+        <div class="menu-preview-heading">
+          <div>
+            <p class="eyebrow eyebrow-dark"><span></span> FROM MORNING TO MIDNIGHT</p>
+            <h2>A seat at <em>our table.</em></h2>
+          </div>
+          <p>Freshly prepared, generous by nature, and always best shared.</p>
+        </div>
+        <div class="menu-categories">
+          <a class="menu-category" href="#menu">
+            <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="A breakfast spread" loading="lazy" />
+            <span class="menu-category-number">01</span><span class="menu-category-name">Breakfast <i>↗</i></span>
+          </a>
+          <a class="menu-category" href="#menu">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="A colourful lunch dish" loading="lazy" />
+            <span class="menu-category-number">02</span><span class="menu-category-name">Lunch <i>↗</i></span>
+          </a>
+          <a class="menu-category" href="#menu">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Grilled dishes served for dinner" loading="lazy" />
+            <span class="menu-category-number">03</span><span class="menu-category-name">Dinner <i>↗</i></span>
+          </a>
+        </div>
+        <a class="menu-order-link" href="#menu">Browse dishes &amp; order <span aria-hidden="true">↓</span></a>
+      </section>
+
+      <section class="menu-layout" id="menu">
+        <div class="menu-main">
+          <div class="menu-heading">
+            <div>
+              <p class="eyebrow eyebrow-dark">MADE TO BE SHARED</p>
+              <h2>Find your <em>favourite.</em></h2>
+            </div>
+            <label class="search-box"
+              ><span aria-hidden="true">⌕</span
+              ><input
+                id="searchInput"
+                type="search"
+                placeholder="Search the menu"
+                aria-label="Search the menu"
+              /><kbd>⌘ K</kbd></label
+            >
+          </div>
+          <nav
+            class="category-list"
+            aria-label="Food categories"
+            id="categoryList"
+          ></nav>
+          <div class="results-line">
+            <span id="resultsLabel">All dishes</span
+            ><span
+              >MENU <span class="result-dot">·</span>
+              <span id="dishCount">0</span> ITEMS</span
+            >
+          </div>
+          <div id="menuSections" class="menu-sections"></div>
+          <div id="emptyState" class="empty-state" hidden>
+            <span>⌕</span><strong>No dishes found</strong>
+            <p>Try another search or choose a different category.</p>
+          </div>
+        </div>
+
+        <aside class="order-panel" id="orderPanel" aria-label="Your order">
+          <div class="order-title">
+            <div>
+              <p class="eyebrow eyebrow-dark">MADE FOR YOU</p>
+              <h2>
+                Your order <span id="cartCount" class="cart-count">0</span>
+              </h2>
+            </div>
+            <button id="clearCart" class="text-button" type="button" hidden>
+              Clear
+            </button>
+          </div>
+          <div class="order-status">
+            <span class="status-dot"></span> Dine in
+            <span class="status-separator">·</span> Table
+            <span id="tableNumber">04</span>
+            <button type="button" class="change-table" id="changeTable">
+              Change
+            </button>
+          </div>
+          <div id="cartItems" class="cart-items">
+            <div class="cart-empty">
+              <span class="empty-bowl" aria-hidden="true">✳</span
+              ><strong>Your table is waiting.</strong>
+              <p>Add something delicious<br />to get started.</p>
+            </div>
+          </div>
+          <div class="order-bottom">
+            <div class="subtotal-row">
+              <span>Subtotal</span><strong id="subtotal">Rs 0</strong>
+            </div>
+            <div class="tax-row">
+              <span>Taxes &amp; service</span
+              ><span>Calculated at checkout</span>
+            </div>
+            <button
+              id="checkoutButton"
+              class="checkout-button"
+              type="button"
+              disabled
+            >
+              <span>Place your order</span><span aria-hidden="true">↗</span>
+            </button>
+            <p class="order-footnote">
+              You can review everything before confirming.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <a class="brand footer-brand" href="#home" aria-label="Ziyafat Hotel home">
+        <span class="brand-mark" aria-hidden="true">ZIYAFAT</span>
+        <span class="brand-caption">RESTAURANT <i>24/7</i></span>
+      </a>
+      <div class="footer-details">
+        <div><p class="eyebrow">OUR ADDRESS</p><p>City Mall, Share Naw Street<br />Opposite Majid Mall, Kabul City</p><a href="https://maps.google.com/?q=Ziyafat+Restaurant+Kabul">Get directions ↗</a></div>
+        <div><p class="eyebrow">SAY HELLO</p><a href="tel:+93782322222">+93 782 322 222</a><a href="mailto:info@ziyafatrestaurants.com">info@ziyafatrestaurants.com</a></div>
+        <div><p class="eyebrow">WHEN TO VISIT</p><p>Seating: 24/7 daily<br />Delivery &amp; takeaway: 24/7</p></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Ziyafat Restaurant</span><a href="#home">Back to top ↑</a></div>
+    </footer>
+
+    <div class="mobile-order-bar" id="mobileOrderBar">
+      <span
+        ><strong id="mobileCartCount">0</strong> items
+        <b id="mobileSubtotal">Rs 0</b></span
+      ><button id="viewOrder" type="button">
+        View order <span aria-hidden="true">↑</span>
+      </button>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
